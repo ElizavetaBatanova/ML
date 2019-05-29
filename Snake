@@ -1,0 +1,84 @@
+# 
+# Доска с квадратами, имеющими 4 состояния:
+# 1) препятствие obstacle
+# 2) хвост змеи tail
+# 3) bounce (собраный/не собраный)
+# 4) empty 
+#
+#
+# Snake.location - расположение головы змеи на доске; является списком.
+# Переход от доски к текущему местоположению: location = snake.location
+# Переход от текущего к доске: snake = board[location]
+
+
+class Field(object):
+    location = (0, 0)
+    value = 0
+    def __init__(self, location):
+        self.location = location
+        
+ # Класс: Snake
+# self.board: список квадратов; инициализируется в начале игры и постоянно обновляется
+# self.frontier: квадраты на границах текущего состояния
+# self.bonus_number: количество бонусов на доске
+# self.obstacle_number: количество препятствий на доске
+# self.bonus_value: значение квадрата с бонусом
+# self.obstacle_value: значение квадрата с obstacle
+# self.bonus_taken_value: состояние бонуса - забрали или нет
+# self.gameEnd: true, if all bonuces are taken OR face a obstacle OR face the tail
+
+class Snake(object):
+    board = []
+    frontier = []
+
+    row_size = 0
+    column_size = 0
+
+    bonus_number = 0
+    obstacle_number = 0
+
+    bonus_value = 1
+    obstacle_value = 2
+    
+    taken_bonus = 0
+    gameEnd = False
+
+    score = 0
+    gameWon = False
+    
+    verbose = False
+
+    # Начинаем игру.
+    # Создаем доску, добавляем бомбы в зависимости от сложности.
+
+    def __init__(self, row=30, column=30, difficulty=15, verbose=False):
+        self.row_size = row
+        self.column_size = column
+
+        self.board = []
+        self.frontier = []
+
+        self.verbose = verbose
+
+        for row in range(row):
+            self.board.append([])
+            for col in range(column):
+                self.board[row].append(Field((row, col)))
+
+        self.insert_mines()
+        
+        
+        
+        
+        
+         # Вектор текущего состояния:
+        # Если квадрат закрыт, то состояние self.covered_value.
+        # В противном случае квадрат раскрывается и используется значение квадрата.
+
+
+        def get_state(self):
+            state = []
+            for row in range(self.row_size):
+                for col in range(self.column_size):
+                    square = self.board[row][col]
+                  
