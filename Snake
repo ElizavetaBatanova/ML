@@ -72,13 +72,12 @@ class Snake(object):
         
         
          # Вектор текущего состояния:
-        # Если квадрат закрыт, то состояние self.covered_value.
-        # В противном случае квадрат раскрывается и используется значение квадрата.
+         
 
 
         def get_state(self):
             state = []
             for row in range(self.row_size):
                 for col in range(self.column_size):
-                    square = self.board[row][col]
+                    field = self.board[row][col]
                   
